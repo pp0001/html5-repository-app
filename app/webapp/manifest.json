@@ -7,6 +7,16 @@
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/odata/odata/v2/CatalogService",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
@@ -28,7 +38,6 @@
 			}
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -45,7 +54,6 @@
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
@@ -67,6 +75,10 @@
 			"cozy": true
 		},
 		"models": {
+			"": {
+				"dataSource": "mainService",
+				"preload": true
+			},
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
@@ -75,9 +87,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -89,11 +103,15 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "RouteView1",
-				"pattern": "RouteView1",
-				"target": ["TargetView1"]
-			}],
+			"routes": [
+				{
+					"name": "RouteView1",
+					"pattern": "RouteView1",
+					"target": [
+						"TargetView1"
+					]
+				}
+			],
 			"targets": {
 				"TargetView1": {
 					"viewType": "XML",
@@ -101,6 +119,10 @@
 					"clearControlAggregation": false,
 					"viewId": "View1",
 					"viewName": "View1"
+				},
+				"masterView": {
+					"viewType": "XML",
+					"viewName": "masterView"
 				}
 			}
 		}

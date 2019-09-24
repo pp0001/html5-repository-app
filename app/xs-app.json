@@ -5,6 +5,13 @@
     "logoutEndpoint": "/do/logout"
   },
   "routes": [
+  	{
+		"source": "^/odata/(.*)$",
+		"target": "$1",
+		"authenticationType": "xsuaa",
+		"service": "my.bookshop",
+		"endpoint": "bookshop"
+	},
     {
       "source": "^(.*)$",
       "target": "$1",

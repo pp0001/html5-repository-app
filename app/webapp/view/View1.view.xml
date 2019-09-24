@@ -1,11 +1,23 @@
-<mvc:View controllerName="test.sap.app.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
-	<Shell id="shell">
-		<App id="app">
-			<pages>
-				<Page id="page" title="{i18n>title}">
-					<content></content>
-				</Page>
-			</pages>
-		</App>
-	</Shell>
+<mvc:View
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	height="100%">
+
+		<!-- use this to make the table occupy the available screen height -->
+		<VBox fitContainer="true">
+			<smartTable:SmartTable id="LineItemsSmartTable" entitySet="Books" 
+			smartFilterId="smartFilterBar" tableType="Table" useExportToExcel="true" 
+			beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true"
+			header="Line Items" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" 
+			enableAutoBinding="true" class="sapUiResponsiveContentPadding">
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+				<smartTable:layoutData>
+					<FlexItemData growFactor="1" baseSize="0%"/>
+				</smartTable:layoutData>
+			</smartTable:SmartTable>
+		</VBox>
 </mvc:View>

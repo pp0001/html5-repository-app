@@ -15,6 +15,7 @@ modules:
       - name: bookshop-flp-uaa
       - name: bookshop-portal
       - name: portal_resources_bookshop-frontend
+      - name: bk-broker-instance
     properties:
       TENANT_HOST_PATTERN: '^(.*)-bookshop-frontend-${space}'
   - name: bookshop-frontend_ui_deployer
@@ -47,6 +48,7 @@ modules:
       - name: bookshop-flp-uaa
       - name: bookshop-frontend_html5_repo_host
       - name: bookshop-frontend_ui_deployer
+      - name: bk-broker-instance
 resources:
   - name: bookshop-frontend_html5_repo_runtime
     parameters:
@@ -78,3 +80,8 @@ resources:
       service-plan: standard
       service: portal
     type: org.cloudfoundry.managed-service
+  - name: bk-broker-instance
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: test-bookshop-new-broker
+      service-plan: standard
